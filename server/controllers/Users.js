@@ -30,7 +30,12 @@ module.exports = {
     .then(function(user) {
       res.status(201).send('succes')
     })
+  },
+  addUtilityApi: function(req, res) {
+    console.log('inuapi...', req.user);
 
-  }
+    // pass the userId to identify unique user
+    res.redirect(constants.UTILITYAPI_PORTAL+'?state='+req.user.userId);
+  },
 
 }
