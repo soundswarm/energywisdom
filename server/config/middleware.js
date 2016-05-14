@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var cors = require('cors');
 var constants = require('./constants');
 

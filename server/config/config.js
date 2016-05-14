@@ -1,11 +1,10 @@
 
 if(process.env.PORT) {
   // heroku server
-  var clientId = 'asfd';
 } else {
   // localhost server
-  var clientId = 'asdf';
-  var clientSecret = 'adsf';
+    var clientId = '1127592880586330';
+  var clientSecret = 'd7616011a31be48e7e66bd95a4a295ab';
 }
 module.exports = {
   FACEBOOK_CLIENTID: clientId,
