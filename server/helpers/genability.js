@@ -18,7 +18,7 @@ module.exports = {
     calculateSavings: function (req, res) {
         var zipCode = req['zipCode'];
         //var accountPromise = createAccount(zipCode);
-        var usageProfileIdPromise = null;
+        //var usageProfileIdPromise = null;
         var resultPromises = [];
         for (var pv_size = 2; pv_size <= 10; pv_size += 2) {
             for (var battery_size = 2; battery_size <= 10; battery_size += 2) {
@@ -44,7 +44,7 @@ module.exports = {
                             return {
                                 pv_size: pv_size,
                                 battery_size: battery_size,
-                                savings: savings
+                                savings: savings - (pv_size * 1000 * 3.50) - (battery_size * 1000)
                             };
                         })
                         .catch(function (error) {
@@ -168,13 +168,6 @@ module.exports = {
                 "scenarios": "before,after",
                 "keyName": "baselineType",
                 "dataValue": "TYPICAL"
-            }],
-            "rateInputs": [{
-                "scenarios": "solar",
-                "chargeType": "CONSUMPTION_BASED",
-                "rateBands": [{
-                    "rateAmount": 0.155
-                }]
             }]
         };
         return rp.post(options)
