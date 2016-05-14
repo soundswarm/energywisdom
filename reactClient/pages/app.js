@@ -14,7 +14,7 @@ class App extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="footer_bottom">
-                                    <p className="text-block"> &copy; Varsanity</p>
+                                    <p className="text-block"> &copy; VARSanity</p>
                                 </div>
                             </div>
                         </div>

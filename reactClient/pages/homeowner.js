@@ -13,7 +13,7 @@ class HomeOwner extends Component {
                 <div className="row">
                     <div className="col-md-12 col-sm-12 col-xs-12">
                         <div className="feature_header text-center">
-                            <h3 className="feature_title">Cool <b>stuff</b></h3>
+                            <h3 className="feature_title">The <b>VARSanity</b> Recommendation</h3>
                             <h4 className="feature_sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h4>
                             <img src="images/graph.png" />
                             <div className="divider"></div>
