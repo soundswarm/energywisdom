@@ -8,10 +8,11 @@ module.exports = function(app) {
   // app.post('/signIn', Auth.signIn);
   // app.get('/signOut', Auth.signOut);
 
-  app.get('/auth/facebook', function(req, res, next){console.log('hasdfh'); next();},passport.authenticate('facebook', { scope: 'email'} ));
+  app.get('/auth/facebook',passport.authenticate('facebook', { scope: 'email'} ));
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {
         failureRedirect : '/'
     }), function(req, res) {
+    console.log('incallback');
       var user = req.user;
       res.cookie('isLoggedIn', true);
       res.redirect('/');

@@ -39,7 +39,7 @@ passport.use(new FacebookStrategy(fbOptions,
       } else if(userFromDb === 'user already exists') {
         return done(null, userFromDb);
       }
-      
+      // console.log('userfromddb',userFromDb);
       return done(null, userFromDb);
     })
     .catch(function(err){

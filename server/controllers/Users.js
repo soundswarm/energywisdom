@@ -14,11 +14,14 @@ module.exports = {
 
     res.status(200).send('asdf')
   },
-  addFacebookUser: function(user) {
+  addFacebookUser: function(fbUser) {
+    // console.log('fbuser to add',user.id);
+    var user = {
+      userId: fbUser.id,
+    }
+    console.log(Users.findAsync(user))
     return Users.insertAsync(user)
-    .then(function(user) {
-      return user
-    })
+
   },
   addUtilityApiBillData: function(req, res) {
     var data = req.body;
