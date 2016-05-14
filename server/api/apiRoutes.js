@@ -21,5 +21,7 @@ module.exports = function(app) {
   )
   app.get('/addUser', Users.addUser)
   app.post('/addUtilityApiBillData', Users.addUtilityApiBillData)
+  app.get('/utilityApi', Users.addUtilityApi)
+  app.get('/utilityApi/callback', Users.utilityApiCallback);
 
 };
