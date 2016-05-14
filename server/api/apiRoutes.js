@@ -21,17 +21,13 @@ module.exports = function(app) {
     }
   )
   app.get('/addUser', Users.addUser)
-  app.post('/addUtilityApiBillData', Users.addUtilityApiBillData)
   app.get('/utilityApi', Users.addUtilityApi)
   app.get('/utilityApi/callback', Users.utilityApiCallback);
 
-  //   }
-  // )
   app.post('/calculateSavings', Helpers.calculateSavings);
 
+  // use postman to add utility api data
+  app.post('/addUtilityApiBillData', Users.addUtilityApiBillData)
+  app.post('/addUtilityApiIntervalData', Users.addUtilityApiIntervalData)
 
-  // routes for testing
-  // app.get('/createTables', Database.createTables);
-  // app.get('/loadData', Database.loadData);
-  // app.get('/dropTables', Database.dropTables);
 };

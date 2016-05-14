@@ -38,7 +38,15 @@ module.exports = {
   addUtilityApiBillData: function(req, res) {
     var data = req.body;
     console.log(data);
-    Users.updateAsync({userId: 8}, {$set: {utilityApiBill: data} })
+    Users.updateAsync({userId: '10156448709320261'}, {$set: {utilityApiBills: data} })
+    .then(function(user) {
+      res.status(201).send('succes')
+    })
+  },
+  addUtilityApiIntervalData: function(req, res) {
+    var data = req.body;
+    console.log('putting in intervals');
+    Users.updateAsync({userId: '10156448709320261'}, {$set: {utilityApiIntervals: data} })
     .then(function(user) {
       res.status(201).send('succes')
     })
