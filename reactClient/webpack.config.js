@@ -12,8 +12,7 @@ var config = {
   },
   module : {
     loaders : [
-      { test : /\.js?/, include : APP_DIR, exclude: /node_modules/, loader : 'babel' },
-      { test: /\.css$/, include : APP_DIR, exclude: /node_modules/, loader: "style-loader!css-loader" },
+      { test : /\.js?/, include : APP_DIR, exclude: /node_modules/, loader : 'babel' }
     ]
   }
 };
