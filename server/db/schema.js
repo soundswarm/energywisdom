@@ -6,5 +6,5 @@ var mongoskin = require('mongoskin');
 
 // heroku and dev db
 var db = mongoskin.db('mongodb://@localhost:27017/varsanity', {safe:true})
-
+db.createCollection('Users')
 module.exports = db;

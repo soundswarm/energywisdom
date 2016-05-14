@@ -28,7 +28,6 @@ module.exports = function(app, express) {
 
   
   app.use(express.static(__dirname + '/../../reactClient'));
-<<<<<<< HEAD
   //webpack is not used on the server because the build happens before the code is pushed to the server
   if(process.env.NODE_ENV !== 'production') {
     // var config = require('../../reactClient/webpack.config.js')
@@ -42,9 +41,6 @@ module.exports = function(app, express) {
     // app.use(webpackHotMiddleware(compiler))
   }
   
-=======
-
->>>>>>> 6f6ca28e5ebad4d43742fcbf5c4326468d81e48d
 
   // routes
   var apiRouter = new express.Router();
