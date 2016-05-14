@@ -21,7 +21,7 @@ module.exports = {
   createAccount: function(account) {  
     var options = new RpOptions;
     options.uri = 'https://api.genability.com/rest/v1/accounts';
-    options.body = account
+    options.body = account;
     return rp.put(options);
   },
   createTariff: function(subscriber, tariff) {
