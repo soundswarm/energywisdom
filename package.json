@@ -45,6 +45,8 @@
     "jquery": "^2.2.3",
     "json-loader": "^0.5.4",
     "mongo": "^0.1.0",
+    "mongodb-promise": "0.0.4",
+    "mongoose": "^4.4.17",
     "mongoskin": "^2.1.0",
     "morgan": "^1.6.1",
     "multer": "^1.1.0",
