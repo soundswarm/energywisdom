@@ -26474,9 +26474,91 @@
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
-	                                        _lib.Button,
-	                                        { bsStyle: 'primary', bsSize: 'large' },
-	                                        'Large button'
+	                                        _lib.Accordion,
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            _lib.Panel,
+	                                            { header: 'I already have solar', eventKey: '1' },
+	                                            _react2.default.createElement(
+	                                                _lib.FormGroup,
+	                                                { controlId: 'formControlsSelect' },
+	                                                _react2.default.createElement(
+	                                                    _lib.ControlLabel,
+	                                                    null,
+	                                                    'G:'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    _lib.FormControl,
+	                                                    { componentClass: 'select', placeholder: 'select' },
+	                                                    _react2.default.createElement(
+	                                                        'option',
+	                                                        { value: 'select' },
+	                                                        'select'
+	                                                    ),
+	                                                    _react2.default.createElement(
+	                                                        'option',
+	                                                        { value: 'other' },
+	                                                        '...'
+	                                                    )
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    _lib.ControlLabel,
+	                                                    null,
+	                                                    'K:'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    _lib.FormControl,
+	                                                    { componentClass: 'select', placeholder: 'select' },
+	                                                    _react2.default.createElement(
+	                                                        'option',
+	                                                        { value: 'select' },
+	                                                        'select'
+	                                                    ),
+	                                                    _react2.default.createElement(
+	                                                        'option',
+	                                                        { value: 'other' },
+	                                                        '...'
+	                                                    )
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    _lib.ControlLabel,
+	                                                    null,
+	                                                    'W:'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    _lib.FormControl,
+	                                                    { componentClass: 'select', placeholder: 'select' },
+	                                                    _react2.default.createElement(
+	                                                        'option',
+	                                                        { value: 'select' },
+	                                                        'select'
+	                                                    ),
+	                                                    _react2.default.createElement(
+	                                                        'option',
+	                                                        { value: 'other' },
+	                                                        '...'
+	                                                    )
+	                                                )
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-6 text-center' },
+	                                        _react2.default.createElement(
+	                                            _lib.Button,
+	                                            { bsStyle: 'primary' },
+	                                            'I know my login'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-6 text-center' },
+	                                        _react2.default.createElement(
+	                                            _lib.Button,
+	                                            { bsStyle: 'primary' },
+	                                            'I do not know my login'
+	                                        )
 	                                    )
 	                                )
 	                            )
@@ -26538,7 +26620,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    "section",
-	                    { id: "pricing_table", className: "pricing_overlay" },
+	                    { id: "about" },
 	                    _react2.default.createElement(
 	                        "div",
 	                        { className: "container" },
@@ -26554,11 +26636,11 @@
 	                                    _react2.default.createElement(
 	                                        "h3",
 	                                        { className: "feature_title" },
-	                                        "Our ",
+	                                        "Cool ",
 	                                        _react2.default.createElement(
 	                                            "b",
 	                                            null,
-	                                            "Pricing"
+	                                            "stuff"
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
@@ -26566,9 +26648,22 @@
 	                                        { className: "feature_sub" },
 	                                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. "
 	                                    ),
+	                                    _react2.default.createElement("img", { src: "images/graph.png" }),
 	                                    _react2.default.createElement("div", { className: "divider" })
 	                                )
-	                            ),
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "section",
+	                    { id: "pricing_table", className: "pricing_overlay" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "container" },
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "row" },
 	                            _react2.default.createElement(
 	                                "div",
 	                                { className: "text-center pricing" },
@@ -26888,27 +26983,56 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var App = function (_Component) {
-	  _inherits(App, _Component);
+	    _inherits(App, _Component);
 	
-	  function App() {
-	    _classCallCheck(this, App);
+	    function App() {
+	        _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
-	  }
-	
-	  _createClass(App, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_navigation2.default, null),
-	        _react2.default.cloneElement(this.props.children || _react2.default.createElement('div', null), { key: this.props.location })
-	      );
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
 	    }
-	  }]);
 	
-	  return App;
+	    _createClass(App, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_navigation2.default, null),
+	                _react2.default.cloneElement(this.props.children || _react2.default.createElement('div', null), { key: this.props.location }),
+	                _react2.default.createElement(
+	                    'section',
+	                    { id: 'footer' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'footer_b' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'container' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'row' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-6' },
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'footer_bottom' },
+	                                        _react2.default.createElement(
+	                                            'p',
+	                                            { className: 'text-block' },
+	                                            ' © Varsanity'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return App;
 	}(_react.Component);
 	
 	module.exports = App;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import {Button} from 'react-bootstrap/lib'
+import { Button, Accordion, Panel, FormGroup, ControlLabel, FormControl } from 'react-bootstrap/lib'
+
 
 class Landing extends Component {
   render() {
@@ -27,7 +28,40 @@ class Landing extends Component {
                                 <span className="form-icon fa fa-map-marker"></span>
                             </div>
                           </form>
-<Button bsStyle="primary" bsSize="large">Large button</Button>
+
+                            <Accordion>
+                                <Panel header="I already have solar" eventKey="1">
+                                  <FormGroup controlId="formControlsSelect">
+                                      <ControlLabel>G:</ControlLabel>
+                                      <FormControl componentClass="select" placeholder="select">
+                                        <option value="select">select</option>
+                                        <option value="other">...</option>
+                                      </FormControl>
+
+                                      <ControlLabel>K:</ControlLabel>
+                                      <FormControl componentClass="select" placeholder="select">
+                                        <option value="select">select</option>
+                                        <option value="other">...</option>
+                                      </FormControl>
+
+                                      <ControlLabel>W:</ControlLabel>
+                                      <FormControl componentClass="select" placeholder="select">
+                                        <option value="select">select</option>
+                                        <option value="other">...</option>
+                                      </FormControl>
+
+                                  </FormGroup>
+                                </Panel>
+                            </Accordion>
+
+                            <div className="col-md-6 text-center">
+                                <Button bsStyle="primary">I know my login</Button>
+                            </div>
+
+                            <div className="col-md-6 text-center">
+                                <Button bsStyle="primary">I do not know my login</Button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

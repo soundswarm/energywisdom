@@ -1217,7 +1217,7 @@ padding: 8px 15px;
     top: 0px;
 }
 #pricing_table {
-    background: url("../images/bg/1.jpg")fixed center center;
+    background: url("../../images/10895640174_58a89eb183_k.jpg")fixed center center;
     background-size: cover;
 }
 
@@ -1604,7 +1604,6 @@ padding: 8px 15px;
 #contact .divider{color: #fff!important;}
 
 .left_contact{
-    color: #E7E7E7;
     max-width:850px; 
 }
 
@@ -1715,7 +1714,9 @@ padding: 8px 15px;
 }
 /* Footer Area
 ==========================================*/
-#footer{}
+#footer{
+    margin-top: 100px;
+}
 .footer_top{
     overflow: hidden;
     padding: 30px 0px 50px;
@@ -1915,7 +1916,7 @@ padding: 8px 15px;
     padding: 55px 0px;
 }
 #banner{
-    background: url("../images/slider/b6.jpg")no-repeat;
+    background: url("../../images/8341386992_411d74a906_k.jpg")no-repeat;
     background-size: cover;
     height: 500px;
 }
