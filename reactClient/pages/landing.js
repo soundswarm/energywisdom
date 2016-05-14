@@ -55,7 +55,7 @@ class Landing extends Component {
                             </Accordion>
 
                             <div className="col-md-6 text-center">
-                                <Button bsStyle="primary">I know my login</Button>
+                                <Button href="/utilityApi" bsStyle="primary">I know my login</Button>
                             </div>
 
                             <div className="col-md-6 text-center">
