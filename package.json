@@ -44,6 +44,7 @@
     "imports-loader": "^0.6.5",
     "jquery": "^2.2.3",
     "json-loader": "^0.5.4",
+    "moment": "^2.13.0",
     "mongo": "^0.1.0",
     "mongodb-promise": "0.0.4",
     "mongoose": "^4.4.17",

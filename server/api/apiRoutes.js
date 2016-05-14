@@ -1,6 +1,7 @@
 var Users = require('../controllers/Users')
 // var Auth = require('../controllers/Auth')
 var passport = require('passport');
+var Helpers = require('../helpers/genability');
 
 module.exports = function(app) {
   // Auth routes
@@ -20,4 +21,13 @@ module.exports = function(app) {
   )
   app.get('/addUser', Users.addUser)
 
+  //   }
+  // )
+  app.post('/calculateSavings', Helpers.calculateSavings);
+
+
+  // routes for testing
+  // app.get('/createTables', Database.createTables);
+  // app.get('/loadData', Database.loadData);
+  // app.get('/dropTables', Database.dropTables);
 };
