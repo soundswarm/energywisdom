@@ -20,6 +20,9 @@ class Navigation extends Component {
                 <nav className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav navbar-right">
                         <li>
+                            <Link to="">Main Page</Link>
+                        </li>
+                        <li>
                            <Link to="homeowner">Home Owner</Link>
                         </li>
                         <li>
