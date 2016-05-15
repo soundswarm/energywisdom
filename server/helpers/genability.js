@@ -17,47 +17,56 @@ var RpOptions = function () {
 module.exports = {
     calculateSavings: function (req, res) {
         var zipCode = req['zipCode'];
-        //var accountPromise = createAccount(zipCode);
-        //var usageProfileIdPromise = null;
         var resultPromises = [];
-        for (var pv_size = 2; pv_size <= 10; pv_size += 2) {
-            for (var battery_size = 2; battery_size <= 10; battery_size += 2) {
-                resultPromises.push(function (pv_size, battery_size) {
-                    var solarProfileIdPromise = module.exports.createSolarProfile(pv_size)
-                        .then(function (solarProfile) {
-                            return solarProfile.results[0].profileId;
-                        });
-                    var batteryProfileIdPromise = module.exports.createBatteryProfile(battery_size)
-                        .then(function (batteryProfile) {
-                            return batteryProfile.results[0].profileId;
-                        })
-                        .catch(function (error) {
-                            console.log(error)
-                        });
-                    var result = Promise.all([solarProfileIdPromise, batteryProfileIdPromise])
-                        .then(module.exports.runSavingsAnalysis)
-                        .then(function (analysis) {
-                            return analysis.results[0].summary.lifetimeAvoidedCost;
-                        })
-                        .then(function (savings) {
-                            console.log(savings);
-                            return {
-                                pv_size: pv_size,
-                                battery_size: battery_size,
-                                savings: savings - (pv_size * 1000 * 3.50) - (battery_size * 1000)
-                            };
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                    return result;
-                }(pv_size, battery_size));
+        var accountPromise = module.exports.createAccount(zipCode);
+        accountPromise.then(function () {
+            for (var pv_size = 1; pv_size <= 5; pv_size += 1) {
+                for (var battery_size = 1; battery_size <= 5; battery_size += 1) {
+                    resultPromises.push(function (pv_size, battery_size) {
+                        var solarProfileIdPromise = module.exports.createSolarProfile(pv_size)
+                            .then(function (solarProfile) {
+                                return solarProfile.results[0].profileId;
+                            });
+                        var batteryProfileIdPromise = module.exports.createBatteryProfile(battery_size)
+                            .then(function (batteryProfile) {
+                                return batteryProfile.results[0].profileId;
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            });
+                        var result = Promise.all([solarProfileIdPromise, batteryProfileIdPromise])
+                            .then(module.exports.runSavingsAnalysis)
+                            .then(function (analysis) {
+                                return analysis.results[0].summary.lifetimeAvoidedCost;
+                            })
+                            .then(function (savings) {
+                                return {
+                                    pv_size: pv_size,
+                                    battery_size: battery_size,
+                                    savings: savings - (pv_size * 1000 * 3.50) - (battery_size * 1000)
+                                };
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                        return result;
+                    }(pv_size, battery_size));
+                }
             }
-        }
-        Promise.all(resultPromises).then(function (results) {
-            console.log(results);
-            res.status(200).json(results);
+            Promise.all(resultPromises).then(function (results) {
+                res.status(200).json(results);
+            });
         });
+    },
+
+    createAccount: function(zipCode) {
+        var options = new RpOptions;
+        options.uri = 'https://api.genability.com/rest/v1/accounts';
+        options.body = {
+            providerAccountId: "Varsanity",
+            address: zipCode
+        };
+        return rp.put(options);
     },
 
     createSolarProfile: function (pv_size) {
