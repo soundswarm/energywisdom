@@ -43,7 +43,7 @@ class Landing extends Component {
                             </div>
 
                             <div className="col-md-6 text-center">
-                                <Button bsStyle="primary">I <b>do not</b> know my utility login</Button>
+                                <Button href="/homeowner" bsStyle="primary">I <b>do not</b> know my utility login</Button>
                             </div>
 
                         </div>
