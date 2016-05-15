@@ -3,7 +3,9 @@ import { Table } from 'react-bootstrap/lib'
 import _ from 'lodash'
 
 
-
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
 function percentToRGB(percent) {
@@ -29,10 +31,6 @@ function percentToRGB(percent) {
     g = Math.floor((g + 256) / 2);
     b = Math.floor((b + 256) / 2);
 
-    //var r = (Math.round(Math.random()* 127) + 127);
-    //var g = (Math.round(Math.random()* 127) + 127);
-    //var b = (Math.round(Math.random()* 127) + 127);
-
     return "rgb(" + r + "," + g + "," + b + ")";
 }
 
@@ -41,132 +39,132 @@ class Installer extends Component {
   render() {
 
       let raw_data = [
-          {
-            "pv_size": 2,
-            "battery_size": 2,
-            "savings": 13847.35
-          },
-          {
-            "pv_size": 2,
-            "battery_size": 4,
-            "savings": 13847.35
-          },
-          {
-            "pv_size": 2,
-            "battery_size": 6,
-            "savings": 13847.35
-          },
-          {
-            "pv_size": 2,
-            "battery_size": 8,
-            "savings": 13847.35
-          },
-          {
-            "pv_size": 2,
-            "battery_size": 10,
-            "savings": 13847.35
-          },
-          {
-            "pv_size": 4,
-            "battery_size": 2,
-            "savings": 15182.977
-          },
-          {
-            "pv_size": 4,
-            "battery_size": 4,
-            "savings": 15182.977
-          },
-          {
-            "pv_size": 4,
-            "battery_size": 6,
-            "savings": 15182.977
-          },
-          {
-            "pv_size": 4,
-            "battery_size": 8,
-            "savings": 15182.977
-          },
-          {
-            "pv_size": 4,
-            "battery_size": 10,
-            "savings": 15182.977
-          },
-          {
-            "pv_size": 6,
-            "battery_size": 2,
-            "savings": 12159.341
-          },
-          {
-            "pv_size": 6,
-            "battery_size": 4,
-            "savings": 12159.341
-          },
-          {
-            "pv_size": 6,
-            "battery_size": 6,
-            "savings": 12159.341
-          },
-          {
-            "pv_size": 6,
-            "battery_size": 8,
-            "savings": 12159.341
-          },
-          {
-            "pv_size": 6,
-            "battery_size": 10,
-            "savings": 12159.341
-          },
-          {
-            "pv_size": 8,
-            "battery_size": 2,
-            "savings": 4072.771
-          },
-          {
-            "pv_size": 8,
-            "battery_size": 4,
-            "savings": 4072.771
-          },
-          {
-            "pv_size": 8,
-            "battery_size": 6,
-            "savings": 4072.771
-          },
-          {
-            "pv_size": 8,
-            "battery_size": 8,
-            "savings": 4072.771
-          },
-          {
-            "pv_size": 8,
-            "battery_size": 10,
-            "savings": 4072.771
-          },
-          {
-            "pv_size": 10,
-            "battery_size": 2,
-            "savings": -4013.149
-          },
-          {
-            "pv_size": 10,
-            "battery_size": 4,
-            "savings": -4013.149
-          },
-          {
-            "pv_size": 10,
-            "battery_size": 6,
-            "savings": -4013.149
-          },
-          {
-            "pv_size": 10,
-            "battery_size": 8,
-            "savings": -4013.149
-          },
-          {
-            "pv_size": 10,
-            "battery_size": 10,
-            "savings": -4013.149
-          }
-      ];
+  {
+    "pv_size": 1,
+    "battery_size": 1,
+    "savings": 10586.164
+  },
+  {
+    "pv_size": 1,
+    "battery_size": 2,
+    "savings": 12775.136999999999
+  },
+  {
+    "pv_size": 1,
+    "battery_size": 3,
+    "savings": 14697.021
+  },
+  {
+    "pv_size": 1,
+    "battery_size": 4,
+    "savings": 16548.293
+  },
+  {
+    "pv_size": 1,
+    "battery_size": 5,
+    "savings": 18401.91
+  },
+  {
+    "pv_size": 2,
+    "battery_size": 1,
+    "savings": 15226.702000000001
+  },
+  {
+    "pv_size": 2,
+    "battery_size": 2,
+    "savings": 17159.057
+  },
+  {
+    "pv_size": 2,
+    "battery_size": 3,
+    "savings": 19190.637
+  },
+  {
+    "pv_size": 2,
+    "battery_size": 4,
+    "savings": 21496.33
+  },
+  {
+    "pv_size": 2,
+    "battery_size": 5,
+    "savings": 21817.101000000002
+  },
+  {
+    "pv_size": 3,
+    "battery_size": 1,
+    "savings": 20149.876
+  },
+  {
+    "pv_size": 3,
+    "battery_size": 2,
+    "savings": 21317.101000000002
+  },
+  {
+    "pv_size": 3,
+    "battery_size": 3,
+    "savings": 15552.014
+  },
+  {
+    "pv_size": 3,
+    "battery_size": 4,
+    "savings": 17152.921
+  },
+  {
+    "pv_size": 3,
+    "battery_size": 5,
+    "savings": 11074.061000000002
+  },
+  {
+    "pv_size": 4,
+    "battery_size": 1,
+    "savings": 16077.918000000001
+  },
+  {
+    "pv_size": 4,
+    "battery_size": 2,
+    "savings": 5665.0430000000015
+  },
+  {
+    "pv_size": 4,
+    "battery_size": 3,
+    "savings": 14590.856
+  },
+  {
+    "pv_size": 4,
+    "battery_size": 4,
+    "savings": 15592.963000000003
+  },
+  {
+    "pv_size": 4,
+    "battery_size": 5,
+    "savings": 14817.101000000002
+  },
+  {
+    "pv_size": 5,
+    "battery_size": 1,
+    "savings": 14792.821000000004
+  },
+  {
+    "pv_size": 5,
+    "battery_size": 2,
+    "savings": 14317.101000000002
+  },
+  {
+    "pv_size": 5,
+    "battery_size": 3,
+    "savings": 13317.101000000002
+  },
+  {
+    "pv_size": 5,
+    "battery_size": 4,
+    "savings": 12317.101000000002
+  },
+  {
+    "pv_size": 5,
+    "battery_size": 5,
+    "savings": 11317.101000000002
+  }
+];
 
       let numRows = raw_data.length / 5;
 
@@ -183,7 +181,7 @@ class Installer extends Component {
           for (let j=0; j < 5; j++) {
               let cell = raw_data[i*5 + j];
               let percent = 100 * (1 - (cell.savings - minimum) / range);
-              color_row.push([cell.savings, percentToRGB(percent)]);
+              color_row.push([numberWithCommas(Math.floor(cell.savings)), percentToRGB(percent)]);
           }
           color_data.push(color_row);
       }
@@ -197,9 +195,7 @@ class Installer extends Component {
                 <div className="row">
                     <div className="col-md-12 col-sm-12 col-xs-12">
                         <div className="feature_header text-center">
-                            <h3 className="feature_title">Sweet <b>grid</b></h3>
-                            <h4 className="feature_sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h4>
-                            <div className="divider"></div>
+                            <h3 className="feature_title">The <b>VARSanity</b> Calculator</h3>
                         </div>
                     </div>
                 </div>
@@ -209,6 +205,8 @@ class Installer extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2">
+                    <h4 className="text-center feature_sub">Avoided costs for John Doe, Oakland, CA.</h4>
+                        <p className="text-center">Storage Capacity (kW) x PZ Size (kW)</p>
                       <Table responsive id="installer-table">
                           <thead>
                               <tr>
@@ -225,7 +223,7 @@ class Installer extends Component {
                               color_data.map(function(row, xIndex) {
                                 return (
                                     <tr>
-                                      <td className="text-center"><b>{(1+xIndex)*2}</b></td>
+                                      <td className="text-center"><b>{1+xIndex}</b></td>
                                       {
                                         row.map(function(cell, yIndex) {
                                           return (
