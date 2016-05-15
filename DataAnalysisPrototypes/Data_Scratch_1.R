@@ -117,7 +117,7 @@ update_battery_one_hour=function(single_row)
     }
   if(single_row$s_excess <0 && single_row$battery_charge >0) #if battery power is availble, discharge
     {
-      if(abs(single_row$s_excess) > C)#if deficit is greater than C, add C
+      if(abs(single_row$s_excess) > batt_C)#if deficit is greater than C, add C
       {
         single_row$battery_charge = single_row$battery_charge - batt_C
       }
@@ -132,11 +132,42 @@ update_battery_one_hour=function(single_row)
   }
   return(single_row)
 }
+sol_interval[which(sol_interval$abs_hour==1707),]
 
-simulate_battery_over_time = function(sol_interval)
+simulate_battery_over_time = function(sol_interval_local)
 {
-  for(i in seq(1:(length(sol_interval$abs_hour)-1))
+  for(i in seq(1:(length(sol_interval_local$abs_hour)-1)))
     {
+      print(i)
+      print("extracting single row")
+      single_row = sol_interval_local[which(sol_interval_local$abs_hour==i),]
+      print("Simulating current row")
+      single_row = update_battery_one_hour(single_row)
+      print("updating current row")
+      sol_interval_local[which(sol_interval_local$abs_hour==i),]=single_row
+      print("updating next row")
+      sol_interval_local[which(sol_interval_local$abs_hour==i+1),]$battery_charge=single_row$battery_charge
+      
       
     }
+  return(sol_interval_local)
 }
+
+sol_interval_4 = simulate_battery_over_time(sol_interval_3)
+
+#7298 
+#7297 
+sub_1 = sol_interval[which(sol_interva_$abs_hour==7298)[1],]
+sub_1_place = which(sol_interval$abs_hour==7298)[1]
+sub_2 = sol_interval[which(sol_interval$abs_hour==7297)[1],]
+sub_2_place = which(sol_interval$abs_hour==7297)[1]
+
+
+sol_interval_3 = sol_interval
+attach_1 = sol_interval_3[which(sol_interval_3$abs_hour==1706),]
+attach_1$hour = 2
+attach_1$abs_hour = 1707
+sol_interval_3=rbind(sol_interval_3,attach_1);
+#tests good
+sol_interval_3[50,]$abs_hour=8761
+#next
