@@ -35,10 +35,32 @@ function percentToRGB(percent) {
 }
 
 
-class Installer extends Component {
-  render() {
+let Installer = React.createClass({
 
-      let raw_data = [
+
+    getInitialState: function(){
+        return {
+            raw_data: null
+        };
+    },
+
+    componentDidMount: function(){
+        fetch('http://localhost:8000/api/calculateSavings', {
+                  method: 'POST'
+                }).then((response) => {
+            response.json().then((result) => {
+                this.setState(
+              {raw_data: result}
+          )
+            });
+
+
+        })
+  },
+
+
+  render: function(){
+      let raw_data_OLD = [
   {
     "pv_size": 1,
     "battery_size": 1,
@@ -165,27 +187,64 @@ class Installer extends Component {
     "savings": 11317.101000000002
   }
 ];
+let table = <p className="text-center"><b>Loading...</b></p>
+      if (this.state.raw_data) {
 
-      let numRows = raw_data.length / 5;
+          let numRows = this.state.raw_data.length / 5;
 
 
-      // Alert: the below is super un-optimized...
-      let values = _.map(raw_data, cell => cell.savings);
-      let minimum = _.min(values);
-      let maximum = _.max(values);
-      let range = maximum - minimum;
+          // Alert: the below is super un-optimized...
+          let values = _.map(this.state.raw_data, cell => cell.savings);
+          let minimum = _.min(values);
+          let maximum = _.max(values);
+          let range = maximum - minimum;
 
-      let color_data = [];
-      for (let i=0; i < numRows; i++) {
-          let color_row = [];
-          for (let j=0; j < 5; j++) {
-              let cell = raw_data[i*5 + j];
-              let percent = 100 * (1 - (cell.savings - minimum) / range);
-              color_row.push([numberWithCommas(Math.floor(cell.savings)), percentToRGB(percent)]);
+          let color_data = [];
+          for (let i = 0; i < numRows; i++) {
+              let color_row = [];
+              for (let j = 0; j < 5; j++) {
+                  let cell = this.state.raw_data[i * 5 + j];
+                  let percent = 100 * (1 - (cell.savings - minimum) / range);
+                  color_row.push([numberWithCommas(Math.floor(cell.savings)), percentToRGB(percent)]);
+              }
+              color_data.push(color_row);
           }
-          color_data.push(color_row);
-      }
 
+
+          table = (<Table responsive id="installer-table">
+                  <thead>
+                  <tr>
+                      <th className="text-center"></th>
+                      <th className="text-center">2</th>
+                      <th className="text-center">4</th>
+                      <th className="text-center">6</th>
+                      <th className="text-center">8</th>
+                      <th className="text-center">10</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {
+                      color_data.map(function (row, xIndex) {
+                          return (
+                              <tr>
+                                  <td className="text-center"><b>{1 + xIndex}</b></td>
+                                  {
+                                      row.map(function (cell, yIndex) {
+                                          return (
+                                              <td className="text-center" style={{backgroundColor:cell[1]}}>
+                                                  ${cell[0]}
+                                              </td>
+                                          )
+                                      })
+                                  }
+                              </tr>
+                          )
+                      })
+                  }
+                  </tbody>
+              </Table>
+          );
+      }
 
     return (
       <div>
@@ -207,45 +266,14 @@ class Installer extends Component {
                     <div className="col-md-8 col-md-offset-2">
                     <h4 className="text-center feature_sub">Avoided costs for John Doe, Oakland, CA.</h4>
                         <p className="text-center">Storage Capacity (kW) x PZ Size (kW)</p>
-                      <Table responsive id="installer-table">
-                          <thead>
-                              <tr>
-                                  <th className="text-center"></th>
-                                  <th className="text-center">2</th>
-                                  <th className="text-center">4</th>
-                                  <th className="text-center">6</th>
-                                  <th className="text-center">8</th>
-                                  <th className="text-center">10</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                            {
-                              color_data.map(function(row, xIndex) {
-                                return (
-                                    <tr>
-                                      <td className="text-center"><b>{1+xIndex}</b></td>
-                                      {
-                                        row.map(function(cell, yIndex) {
-                                          return (
-                                              <td className="text-center" style={{backgroundColor:cell[1]}}>
-                                                ${cell[0]}
-                                              </td>
-                                          )
-                                        })
-                                      }
-                                    </tr>
-                                )
-                              })
-                            }
-                          </tbody>
-                      </Table>
+                        {table}
                   </div>
                 </div>
             </div>
       </div>
     )
   }
-}
+});
 
 
 module.exports = Installer;
